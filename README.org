@@ -1,0 +1,48 @@
+
+* Dependency
+
+- Python2
+- inbox.py
+
+#+BEGIN_SRC sh
+pip install inbox.py
+#+END_SRC
+
+* Usage
+
+** Start mail service
+
+In one terminal,
+
+#+BEGIN_SRC sh
+python server_for_jenkins/mail_server.py 192.168.0.100 1025
+#+END_SRC
+
+Open up annother terminal, ( or you can use tmux )
+
+#+BEGIN_SRC sh
+python server_for_user/mail_server.py 192.168.0.100 1026
+#+END_SRC
+
+** Start a jenkins service
+
+Set jenkins SMTP server
+
+Manage Jenkins -> Configure System
+E-mail Notification
+
+SMTP server 192.168.0.100
+
+SMTP Port 1025
+
+** Test
+
+In jenkins,
+
+Send a email to
+
+192.168.0.100@1026
+
+* Reference
+
+[[https://github.com/kennethreitz/inbox.py][inbox.py Python SMTP Server for Human]]
